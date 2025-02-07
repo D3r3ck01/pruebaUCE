@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http:/www.thymeleaf.org">
+
+<head>
+    <title>Pagina de Administracion</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <h1>Pagina de Administracion</h1>
+    <h2>Lista de Participantes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Num Cedula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="persona : ${personas}">
+                <td th:text="${persona.numCedula}"></td>
+                <td th:text="${persona.nombre}"></td>
+                <td th:text="${persona.apellido}"></td>
+                <td th:text="${persona.email}"></td>
+                <td th:text="${persona.telefono}"></td>
+                <td th:text="${persona.direccion}"></td>
+                <td>
+                    <a th:href="@{/persona/editar/{numCedula}{numCedula=${persona.numCedula}}}"></a>
+                    <a th:href="@{/persona/eliminar/{numCedula}{numCedula=${persona.numCedula}}}"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/personas/nuevo">Nueva Persona</a>
+</body>
+
+</html>
